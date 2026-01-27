@@ -1,5 +1,5 @@
 
-# OJTrack
+# OJTracker
 
 A command-line application to help interns record, monitor, and summarize OJT hours. Built with **Typer** for the CLI interface and **SQLite** for storing work logs, including dates, time in/out, hours rendered, and remarks.
 ## Key features include:
