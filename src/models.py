@@ -16,3 +16,15 @@ def run_migrations():
         """)
     con.commit()
     con.close()
+
+
+def add_log(date, time_in, time_out, remarks):
+    hours_rendered = 6
+    con = get_connection()
+    stmt = """INSERT INTO ojt_logs(date, time_in,time_out,remarks,hours_rendered)
+    VALUES(?,?,?,?,?)"""
+
+    cur = con.cursor()
+    cur.execute(stmt, (date, time_in, time_out, remarks, hours_rendered))
+    con.commit()
+    con.close()
