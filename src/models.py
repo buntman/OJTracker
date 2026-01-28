@@ -28,3 +28,12 @@ def add_log(date, time_in, time_out, remarks):
     cur.execute(stmt, (date, time_in, time_out, remarks, hours_rendered))
     con.commit()
     con.close()
+
+
+def list_logs():
+    con = get_connection()
+    cur = con.cursor()
+    cur.execute("SELECT * FROM ojt_logs")
+    rows = cur.fetchall()
+    con.close()
+    return rows

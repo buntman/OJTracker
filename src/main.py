@@ -3,6 +3,7 @@ import typer
 
 from .models import run_migrations
 from .models import add_log
+from .models import list_logs
 
 app = typer.Typer()
 
@@ -17,6 +18,21 @@ def add(
     add_log(date, time_in, time_out, remarks)
     typer.echo("✅ OJT log added successfully.")
     typer.echo("➡️  Check progress with `ojt summary`.")
+
+
+@app.command()
+def list():
+    logs = list_logs()
+
+    typer.echo(
+        f"{'ID':<4} {'Date':<12} {'Time In':<10} {'Time Out':<10} {'Total Hours':<15} {'Remarks':<20}"
+    )
+    typer.echo("-" * 80)
+
+    for log in logs:
+        typer.echo(
+            f"{log[0]:<4} {log[1]:<12} {log[2]:<10} {log[3]:<10} {log[5]:<15} {log[4]:<20}"
+        )
 
 
 @app.command()
